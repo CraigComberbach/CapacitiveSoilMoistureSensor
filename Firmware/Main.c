@@ -5,7 +5,7 @@ Purpose:
 Notes:
 
 Version History:
-vnext	Y-M-D	Craig Comberbach	Compiler: XC16 v?.??	Optimization: 0	IDE: MPLABx 2.1	Tool: RealICE	Computer: Intel Xeon CPU 3.07 GHz, 6 GB RAM, Windows 7 64 bit Professional SP1
+vnext	Y-M-D	Craig Comberbach	Compiler: XC16 v?.??	Optimization: 0	IDE: MPLABx 2.2	Tool: RealICE	Computer: Intel Xeon CPU 3.07 GHz, 6 GB RAM, Windows 7 64 bit Professional SP1
 	First version
 **************************************************************************************************/
 /*************    Header Files    ***************/
@@ -18,6 +18,8 @@ vnext	Y-M-D	Craig Comberbach	Compiler: XC16 v?.??	Optimization: 0	IDE: MPLABx 2.
 /************* Semantic Versioning***************/
 /************Arbitrary Functionality*************/
 /*************   Magic  Numbers   ***************/
+#define BREATHE_MAX	500
+
 /*************    Enumeration     ***************/
 /***********  Structure Definitions  ************/
 /***********State Machine Definitions************/
@@ -25,17 +27,10 @@ vnext	Y-M-D	Craig Comberbach	Compiler: XC16 v?.??	Optimization: 0	IDE: MPLABx 2.
 int lockedOut = 1;
 
 /*************Interrupt Prototypes***************/
-void __attribute__((interrupt, auto_psv)) _OscillatorFail(void);
-void __attribute__((interrupt, auto_psv)) _AddressError(void);
-void __attribute__((interrupt, auto_psv)) _StackError(void);
-void __attribute__((interrupt, auto_psv)) _MathError(void);
-void __attribute__((interrupt, auto_psv)) _DefaultInterrupt(void);
 void __attribute__((interrupt, auto_psv)) _T1Interrupt(void);
 
 /*************Function  Prototypes***************/
 /************* Device Definitions ***************/
-#define Reset()	asm("reset")
-
 /************* Module Definitions ***************/
 /************* Other  Definitions ***************/
 
@@ -57,7 +52,7 @@ void __attribute__((interrupt, auto_psv)) _T1Interrupt(void);
 	_FGS(GWRP_OFF & GCP_OFF)	//General Segement is not write protected and no security is in place
 	_FOSCSEL(IESO_OFF & FNOSC_FRC) //Two speed start up disabled, and FRC used as the main clock
 //	_FOSCSEL(IESO_OFF & FNOSC_FRCPLL) //Try this one some day!
-	_FOSC(FCKSM_CSDCMD/*FCKSM_CSECME & SOSCSEL_SOSCLP & POSCFREQ_MS*/ & OSCIOFNC_OFF & POSCMOD_HS)//Clock switchin and fail safe monitor are enabled, Secondary oscilator is low power, Oscillator is between 0.1 and 8 MHz, CLK0 is used as pin IO, The primary oscillator is HS
+	_FOSC(FCKSM_CSDCMD/*FCKSM_CSECME & SOSCSEL_SOSCLP & POSCFREQ_MS*/ & OSCIOFNC_ON & POSCMOD_NONE)//Clock switchin and fail safe monitor are enabled, Secondary oscilator is low power, Oscillator is between 0.1 and 8 MHz, CLK0 is used as pin IO, The primary oscillator is disabled
 	_FWDT(FWDTEN_ON & WINDIS_OFF & FWPSA_PR128 & WDTPS_PS32768)
 //	_FWDT(FWDTEN_ON & WINDIS_OFF & FWPSA_PR32 & WDTPS_PS4)//Non-Windowed WDT, Nominal period is 4 mS
 	_FPOR(MCLRE_ON & BORV_V27 & I2C1SEL_PRI & PWRTEN_ON & BOREN_BOR3)	//MCLR is used as MCLR, BOR occurs at 2.7V, I2C lines are default location, Power-Up timer is on (50-90mS, typical 64mS), BOR is hardware controlled only
@@ -69,6 +64,9 @@ void __attribute__((interrupt, auto_psv)) _T1Interrupt(void);
 int main()
 {
 	int delay = 0;
+	int direction = 0;
+	int breathe = BREATHE_MAX;
+
 	Configure_For_Capacitive_Control();
 	while(1)
 	{
@@ -76,8 +74,19 @@ int main()
 
 		while(!lockedOut)
 		{
-			if(delay++ >= 10)
+			//Crudely Breathe the Diagnostic LED
+			if(delay++ >= breathe)
 			{
+				if(direction)
+					++breathe;
+				else
+					--breathe;
+
+				if(breathe <= 0)
+					direction = 1;
+				else if(breathe >= BREATHE_MAX)
+					direction = 0;
+
 				Pin_Toggle(PIN_DIAGNOSTIC_LED);
 				delay = 0;
 			}
@@ -96,39 +105,5 @@ void __attribute__((interrupt, auto_psv)) _T1Interrupt(void)
 	lockedOut = 0;
 	TMR1 = 0;
 	IFS0bits.T1IF = 0;
-	return;
-}
-
-//Error Traps
-//Oscillator Failed
-void __attribute__((interrupt, auto_psv)) _OscillatorFail(void)
-{
-	INTCON1bits.OSCFAIL = 0;
-}
-
-//Address Out of range
-void __attribute__((interrupt, auto_psv)) _AddressError(void)
-{
-	INTCON1bits.ADDRERR = 0;
-	Reset();
-}
-
-//Stack Overflow
-void __attribute__((interrupt, auto_psv)) _StackError(void)
-{
-	INTCON1bits.STKERR = 0;
-	Reset();
-}
-
-//Math error, stupid divide by zero!
-void __attribute__((interrupt, auto_psv)) _MathError(void)
-{
-	INTCON1bits.MATHERR = 0;
-	Reset();
-}
-
-//Something has an unhandled interrupt!
-void __attribute__((interrupt, auto_psv)) _DefaultInterrupt(void)
-{
 	return;
 }

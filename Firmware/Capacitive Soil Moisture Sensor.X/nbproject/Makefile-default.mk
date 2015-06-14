@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=../Main.c ../Config.c ../../../Libraries/Pins/Pins.c ../../../Libraries/A2D/A2D.c ../../../Libraries/CTMU/CTMU.c
+SOURCEFILES_QUOTED_IF_SPACED=../Main.c ../Config.c ../../../Libraries/Pins/Pins.c ../../../Libraries/CTMU/CTMU.c ../../../Libraries/A2D/A2D.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1472/Main.o ${OBJECTDIR}/_ext/1472/Config.o ${OBJECTDIR}/_ext/93644285/Pins.o ${OBJECTDIR}/_ext/972868274/A2D.o ${OBJECTDIR}/_ext/94052802/CTMU.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1472/Main.o.d ${OBJECTDIR}/_ext/1472/Config.o.d ${OBJECTDIR}/_ext/93644285/Pins.o.d ${OBJECTDIR}/_ext/972868274/A2D.o.d ${OBJECTDIR}/_ext/94052802/CTMU.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1472/Main.o ${OBJECTDIR}/_ext/1472/Config.o ${OBJECTDIR}/_ext/93644285/Pins.o ${OBJECTDIR}/_ext/94052802/CTMU.o ${OBJECTDIR}/_ext/972868274/A2D.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1472/Main.o.d ${OBJECTDIR}/_ext/1472/Config.o.d ${OBJECTDIR}/_ext/93644285/Pins.o.d ${OBJECTDIR}/_ext/94052802/CTMU.o.d ${OBJECTDIR}/_ext/972868274/A2D.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/1472/Main.o ${OBJECTDIR}/_ext/1472/Config.o ${OBJECTDIR}/_ext/93644285/Pins.o ${OBJECTDIR}/_ext/972868274/A2D.o ${OBJECTDIR}/_ext/94052802/CTMU.o
+OBJECTFILES=${OBJECTDIR}/_ext/1472/Main.o ${OBJECTDIR}/_ext/1472/Config.o ${OBJECTDIR}/_ext/93644285/Pins.o ${OBJECTDIR}/_ext/94052802/CTMU.o ${OBJECTDIR}/_ext/972868274/A2D.o
 
 # Source Files
-SOURCEFILES=../Main.c ../Config.c ../../../Libraries/Pins/Pins.c ../../../Libraries/A2D/A2D.c ../../../Libraries/CTMU/CTMU.c
+SOURCEFILES=../Main.c ../Config.c ../../../Libraries/Pins/Pins.c ../../../Libraries/CTMU/CTMU.c ../../../Libraries/A2D/A2D.c
 
 
 CFLAGS=
@@ -83,75 +83,75 @@ MP_LINKER_FILE_OPTION=,--script=p24F16KA101.gld
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 ${OBJECTDIR}/_ext/1472/Main.o: ../Main.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
+	@${MKDIR} ${OBJECTDIR}/_ext/1472 
 	@${RM} ${OBJECTDIR}/_ext/1472/Main.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1472/Main.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../Main.c  -o ${OBJECTDIR}/_ext/1472/Main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1472/Main.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -O0 -I"../" -I"../../../Libraries/Pins" -I"../../../Libraries/A2D" -I"../../../Libraries/CTMU" -msmart-io=1 -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/Main.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1472/Config.o: ../Config.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
+	@${MKDIR} ${OBJECTDIR}/_ext/1472 
 	@${RM} ${OBJECTDIR}/_ext/1472/Config.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1472/Config.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../Config.c  -o ${OBJECTDIR}/_ext/1472/Config.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1472/Config.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -O0 -I"../" -I"../../../Libraries/Pins" -I"../../../Libraries/A2D" -I"../../../Libraries/CTMU" -msmart-io=1 -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/Config.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/93644285/Pins.o: ../../../Libraries/Pins/Pins.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/93644285" 
+	@${MKDIR} ${OBJECTDIR}/_ext/93644285 
 	@${RM} ${OBJECTDIR}/_ext/93644285/Pins.o.d 
 	@${RM} ${OBJECTDIR}/_ext/93644285/Pins.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../../Libraries/Pins/Pins.c  -o ${OBJECTDIR}/_ext/93644285/Pins.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/93644285/Pins.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -O0 -I"../" -I"../../../Libraries/Pins" -I"../../../Libraries/A2D" -I"../../../Libraries/CTMU" -msmart-io=1 -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/93644285/Pins.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/_ext/972868274/A2D.o: ../../../Libraries/A2D/A2D.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/972868274" 
-	@${RM} ${OBJECTDIR}/_ext/972868274/A2D.o.d 
-	@${RM} ${OBJECTDIR}/_ext/972868274/A2D.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../../Libraries/A2D/A2D.c  -o ${OBJECTDIR}/_ext/972868274/A2D.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/972868274/A2D.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -O0 -I"../" -I"../../../Libraries/Pins" -I"../../../Libraries/A2D" -I"../../../Libraries/CTMU" -msmart-io=1 -msfr-warn=off
-	@${FIXDEPS} "${OBJECTDIR}/_ext/972868274/A2D.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 ${OBJECTDIR}/_ext/94052802/CTMU.o: ../../../Libraries/CTMU/CTMU.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/94052802" 
+	@${MKDIR} ${OBJECTDIR}/_ext/94052802 
 	@${RM} ${OBJECTDIR}/_ext/94052802/CTMU.o.d 
 	@${RM} ${OBJECTDIR}/_ext/94052802/CTMU.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../../Libraries/CTMU/CTMU.c  -o ${OBJECTDIR}/_ext/94052802/CTMU.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/94052802/CTMU.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -O0 -I"../" -I"../../../Libraries/Pins" -I"../../../Libraries/A2D" -I"../../../Libraries/CTMU" -msmart-io=1 -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/94052802/CTMU.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
+${OBJECTDIR}/_ext/972868274/A2D.o: ../../../Libraries/A2D/A2D.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/_ext/972868274 
+	@${RM} ${OBJECTDIR}/_ext/972868274/A2D.o.d 
+	@${RM} ${OBJECTDIR}/_ext/972868274/A2D.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../../Libraries/A2D/A2D.c  -o ${OBJECTDIR}/_ext/972868274/A2D.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/972868274/A2D.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -O0 -I"../" -I"../../../Libraries/Pins" -I"../../../Libraries/A2D" -I"../../../Libraries/CTMU" -msmart-io=1 -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/_ext/972868274/A2D.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
 else
 ${OBJECTDIR}/_ext/1472/Main.o: ../Main.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
+	@${MKDIR} ${OBJECTDIR}/_ext/1472 
 	@${RM} ${OBJECTDIR}/_ext/1472/Main.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1472/Main.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../Main.c  -o ${OBJECTDIR}/_ext/1472/Main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1472/Main.o.d"        -g -omf=elf -O0 -I"../" -I"../../../Libraries/Pins" -I"../../../Libraries/A2D" -I"../../../Libraries/CTMU" -msmart-io=1 -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/Main.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1472/Config.o: ../Config.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
+	@${MKDIR} ${OBJECTDIR}/_ext/1472 
 	@${RM} ${OBJECTDIR}/_ext/1472/Config.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1472/Config.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../Config.c  -o ${OBJECTDIR}/_ext/1472/Config.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1472/Config.o.d"        -g -omf=elf -O0 -I"../" -I"../../../Libraries/Pins" -I"../../../Libraries/A2D" -I"../../../Libraries/CTMU" -msmart-io=1 -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/Config.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/93644285/Pins.o: ../../../Libraries/Pins/Pins.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/93644285" 
+	@${MKDIR} ${OBJECTDIR}/_ext/93644285 
 	@${RM} ${OBJECTDIR}/_ext/93644285/Pins.o.d 
 	@${RM} ${OBJECTDIR}/_ext/93644285/Pins.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../../Libraries/Pins/Pins.c  -o ${OBJECTDIR}/_ext/93644285/Pins.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/93644285/Pins.o.d"        -g -omf=elf -O0 -I"../" -I"../../../Libraries/Pins" -I"../../../Libraries/A2D" -I"../../../Libraries/CTMU" -msmart-io=1 -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/93644285/Pins.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/_ext/972868274/A2D.o: ../../../Libraries/A2D/A2D.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/972868274" 
-	@${RM} ${OBJECTDIR}/_ext/972868274/A2D.o.d 
-	@${RM} ${OBJECTDIR}/_ext/972868274/A2D.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../../Libraries/A2D/A2D.c  -o ${OBJECTDIR}/_ext/972868274/A2D.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/972868274/A2D.o.d"        -g -omf=elf -O0 -I"../" -I"../../../Libraries/Pins" -I"../../../Libraries/A2D" -I"../../../Libraries/CTMU" -msmart-io=1 -msfr-warn=off
-	@${FIXDEPS} "${OBJECTDIR}/_ext/972868274/A2D.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 ${OBJECTDIR}/_ext/94052802/CTMU.o: ../../../Libraries/CTMU/CTMU.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/94052802" 
+	@${MKDIR} ${OBJECTDIR}/_ext/94052802 
 	@${RM} ${OBJECTDIR}/_ext/94052802/CTMU.o.d 
 	@${RM} ${OBJECTDIR}/_ext/94052802/CTMU.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../../Libraries/CTMU/CTMU.c  -o ${OBJECTDIR}/_ext/94052802/CTMU.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/94052802/CTMU.o.d"        -g -omf=elf -O0 -I"../" -I"../../../Libraries/Pins" -I"../../../Libraries/A2D" -I"../../../Libraries/CTMU" -msmart-io=1 -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/94052802/CTMU.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/972868274/A2D.o: ../../../Libraries/A2D/A2D.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/_ext/972868274 
+	@${RM} ${OBJECTDIR}/_ext/972868274/A2D.o.d 
+	@${RM} ${OBJECTDIR}/_ext/972868274/A2D.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../../../Libraries/A2D/A2D.c  -o ${OBJECTDIR}/_ext/972868274/A2D.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/972868274/A2D.o.d"        -g -omf=elf -O0 -I"../" -I"../../../Libraries/Pins" -I"../../../Libraries/A2D" -I"../../../Libraries/CTMU" -msmart-io=1 -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/_ext/972868274/A2D.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 endif
 
